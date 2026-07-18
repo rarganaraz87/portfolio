@@ -326,66 +326,98 @@ nav {
 .case-toggle.open { background:var(--ink); color:var(--paper); border-color:var(--ink); }
 .case-toggle.open .arrow { transform:rotate(180deg); }
 
+   
 /* =============================================
-   IMAGE GALLERY (Case 02)
+   IMAGE GALLERY (Case sections) — REDESIGNED
    ============================================= */
 .app-gallery {
   margin-top:20px;
   border-top:1px solid rgba(27,36,48,.08);
   padding-top:18px;
 }
-.app-gallery .k { font-family:'IBM Plex Mono',monospace; font-size:11px; text-transform:uppercase; letter-spacing:.09em; color:var(--amber); display:block; margin-bottom:12px; font-weight:600; }
+.app-gallery .k { font-family:'IBM Plex Mono',monospace; font-size:11px; text-transform:uppercase; letter-spacing:.09em; color:var(--amber); display:block; margin-bottom:14px; font-weight:600; }
 
-.gallery-scroll {
-  display:flex; gap:12px;
-  overflow-x:auto; padding-bottom:10px;
-  scroll-snap-type:x mandatory;
-  -webkit-overflow-scrolling:touch;
-  scrollbar-width:thin; scrollbar-color:rgba(27,36,48,.3) transparent;
+.gallery-grid {
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
 }
-.gallery-scroll::-webkit-scrollbar { height:4px; }
-.gallery-scroll::-webkit-scrollbar-track { background:transparent; }
-.gallery-scroll::-webkit-scrollbar-thumb { background:rgba(27,36,48,.25); border-radius:2px; }
+@media(min-width:560px){ .gallery-grid { grid-template-columns:repeat(4,1fr); gap:12px; } }
 
 .gallery-item {
-  flex-shrink:0;
-  width:clamp(160px,42vw,220px);
-  scroll-snap-align:start;
+  position:relative;
+  aspect-ratio:4/3;
   border-radius:var(--r);
   overflow:hidden;
   border:1px solid rgba(27,36,48,.12);
-  background:rgba(27,36,48,.04);
+  background:rgba(27,36,48,.05);
   cursor:pointer;
-  transition:transform .2s, box-shadow .2s;
 }
-@media(hover:hover){ .gallery-item:hover { transform:scale(1.02); box-shadow:0 6px 20px rgba(0,0,0,.15); } }
 .gallery-item img {
-  width:100%; aspect-ratio:9/16; object-fit:cover;
+  width:100%; height:100%; object-fit:cover;
   border-radius:0;
+  transition:transform .35s ease;
 }
-.gallery-item.placeholder {
-  aspect-ratio:9/16;
-  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px;
-  background:rgba(27,36,48,.06); border:2px dashed rgba(27,36,48,.18);
-}
-.gallery-item.placeholder .ph-icon { font-size:28px; opacity:.4; }
-.gallery-item.placeholder .ph-label { font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--slate-dark); text-align:center; padding:0 10px; line-height:1.4; opacity:.7; }
+@media(hover:hover){ .gallery-item:hover img { transform:scale(1.08); } }
 
-/* Lightbox */
+.gallery-item .gallery-caption {
+  position:absolute; inset:auto 0 0 0;
+  padding:8px 10px 7px;
+  background:linear-gradient(0deg,rgba(0,0,0,.72),transparent);
+  color:#fff; font-size:.72rem; font-family:'IBM Plex Sans',sans-serif;
+  opacity:0; transform:translateY(6px);
+  transition:opacity .25s, transform .25s;
+}
+@media(hover:hover){ .gallery-item:hover .gallery-caption { opacity:1; transform:translateY(0); } }
+@media(hover:none){ .gallery-item .gallery-caption { opacity:1; transform:translateY(0); background:linear-gradient(0deg,rgba(0,0,0,.55),transparent); } }
+
+.gallery-item .zoom-hint {
+  position:absolute; top:8px; right:8px;
+  width:26px; height:26px; border-radius:50%;
+  background:rgba(0,0,0,.45); color:#fff;
+  display:flex; align-items:center; justify-content:center;
+  font-size:13px; opacity:0; transition:opacity .2s;
+}
+@media(hover:hover){ .gallery-item:hover .zoom-hint { opacity:1; } }
+
+.gallery-item.placeholder {
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px;
+  background:rgba(27,36,48,.06); border:2px dashed rgba(27,36,48,.18); cursor:default;
+}
+.gallery-item.placeholder .ph-icon { font-size:22px; opacity:.4; }
+.gallery-item.placeholder .ph-label { font-family:'IBM Plex Mono',monospace; font-size:9.5px; color:var(--slate-dark); text-align:center; padding:0 8px; line-height:1.4; opacity:.7; }
+
+/* Lightbox with nav */
 .lightbox {
   display:none; position:fixed; inset:0; z-index:500;
-  background:rgba(10,14,20,.92); align-items:center; justify-content:center;
+  background:rgba(10,14,20,.94); align-items:center; justify-content:center;
   padding:20px;
 }
 .lightbox.open { display:flex; }
-.lightbox img { max-width:100%; max-height:90vh; border-radius:var(--r); object-fit:contain; }
+.lightbox-inner { position:relative; max-width:100%; max-height:100%; display:flex; align-items:center; gap:14px; }
+.lightbox img { max-width:82vw; max-height:86vh; border-radius:var(--r); object-fit:contain; }
 .lightbox-close {
-  position:absolute; top:16px; right:16px;
+  position:absolute; top:-46px; right:0;
   background:rgba(247,245,240,.1); border:1px solid rgba(247,245,240,.2);
-  color:var(--paper); width:40px; height:40px; border-radius:50%;
+  color:var(--paper); width:38px; height:38px; border-radius:50%;
   display:flex; align-items:center; justify-content:center;
-  font-size:18px; cursor:pointer;
-  touch-action:manipulation;
+  font-size:17px; cursor:pointer; touch-action:manipulation;
+}
+.lightbox-nav {
+  background:rgba(247,245,240,.1); border:1px solid rgba(247,245,240,.2);
+  color:var(--paper); width:42px; height:42px; border-radius:50%; flex-shrink:0;
+  display:flex; align-items:center; justify-content:center;
+  font-size:18px; cursor:pointer; touch-action:manipulation;
+  transition:background .18s;
+}
+.lightbox-nav:hover { background:rgba(247,245,240,.2); }
+.lightbox-counter {
+  position:absolute; bottom:-34px; left:50%; transform:translateX(-50%);
+  font-family:'IBM Plex Mono',monospace; font-size:11px; color:rgba(247,245,240,.6);
+}
+@media(max-width:640px){
+  .lightbox-nav { width:36px; height:36px; font-size:15px; }
+  .lightbox img { max-width:88vw; max-height:78vh; }
 }
 
 /* =============================================
@@ -732,34 +764,31 @@ footer { border-top:1px solid var(--line); padding:clamp(20px,4vw,26px) 0; font-
           </div>
 
           <!-- IMAGE GALLERY -->
-          <div class="app-gallery">
-            <span class="k">App screenshots</span>
-            <div class="gallery-scroll">
-              <!--
-                TO ADD YOUR SCREENSHOTS:
-                Replace each placeholder below with a real <img> tag like this:
-                <div class="gallery-item" onclick="openLightbox('your-image.jpg')">
-                  <img src="your-image.jpg" alt="App screenshot — vaccination booking screen">
-                </div>
-              -->
-              <div class="gallery-item placeholder">
-           <!--<span class="ph-icon">📱</span> -->
-                <span class="ph-label"><img src="1.png" alt=""> /span>
-              </div>
-              <div class="gallery-item placeholder">
-              <!--<span class="ph-icon">📱</span> -->
-                <span class="ph-label"><img src="2.png" alt=""></span>
-              </div>
-              <div class="gallery-item placeholder">
-                <!--<span class="ph-icon">📱</span> -->
-                <span class="ph-label"><img src="3.png" alt=""></span>
-              </div>
-              <div class="gallery-item placeholder">
-                <!--<span class="ph-icon">📱</span> -->
-                <span class="ph-label"><img src="4.webp" alt=""></span>
-              </div>
+               <div class="app-gallery">
+                       <span class="k">App screenshots</span>
+                       <div class="gallery-grid" data-gallery="covidapp">
+                         <div class="gallery-item" onclick="openLightbox('covidapp', 0)">
+                           <img src="assets/img/covidapp/covidapp-1.jpg" alt="COVID app — vaccination booking screen">
+                           <span class="zoom-hint">⤢</span>
+                           <span class="gallery-caption">Vaccination booking</span>
+                         </div>
+                         <div class="gallery-item" onclick="openLightbox('covidapp', 1)">
+                           <img src="assets/img/covidapp/covidapp-2.jpg" alt="COVID app — test results screen">
+                           <span class="zoom-hint">⤢</span>
+                           <span class="gallery-caption">Test results</span>
+                         </div>
+                         <div class="gallery-item" onclick="openLightbox('covidapp', 2)">
+                           <img src="assets/img/covidapp/covidapp-3.jpg" alt="COVID app — home screen">
+                           <span class="zoom-hint">⤢</span>
+                           <span class="gallery-caption">Home screen</span>
+                         </div>
+                         <div class="gallery-item" onclick="openLightbox('covidapp', 3)">
+                           <img src="assets/img/covidapp/covidapp-4.jpg" alt="COVID app — notifications screen">
+                           <span class="zoom-hint">⤢</span>
+                           <span class="gallery-caption">Notifications</span>
+                         </div>
+                 </div>
             </div>
-          </div>
 
         </div>
       </article>
