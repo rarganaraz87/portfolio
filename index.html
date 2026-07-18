@@ -61,7 +61,6 @@ nav {
 .nav-logo { font-family:'Fraunces',serif; font-weight:600; font-size:1rem; white-space:nowrap; flex-shrink:0; }
 .nav-logo span { color:var(--amber); }
 
-/* Mobile: hamburger visible, links hidden */
 .nav-hamburger {
   display:flex; align-items:center; justify-content:center;
   width:38px; height:38px; border-radius:var(--r);
@@ -96,7 +95,6 @@ nav {
 }
 .nav-cta:hover { background:var(--amber-soft); }
 
-/* Desktop nav */
 @media(min-width:680px){
   .nav-hamburger { display:none; }
   .nav-links {
@@ -326,9 +324,8 @@ nav {
 .case-toggle.open { background:var(--ink); color:var(--paper); border-color:var(--ink); }
 .case-toggle.open .arrow { transform:rotate(180deg); }
 
-   
 /* =============================================
-   IMAGE GALLERY (Case sections) — REDESIGNED
+   IMAGE GALLERY (Case sections)
    ============================================= */
 .app-gallery {
   margin-top:20px;
@@ -764,31 +761,31 @@ footer { border-top:1px solid var(--line); padding:clamp(20px,4vw,26px) 0; font-
           </div>
 
           <!-- IMAGE GALLERY -->
-               <div class="app-gallery">
-                       <span class="k">App screenshots</span>
-                       <div class="gallery-grid" data-gallery="covidapp">
-                         <div class="gallery-item" onclick="openLightbox('covidapp', 0)">
-                           <img src="assets/img/covidapp/covidapp-1.jpg" alt="COVID app — vaccination booking screen">
-                           <span class="zoom-hint">⤢</span>
-                           <span class="gallery-caption">Vaccination booking</span>
-                         </div>
-                         <div class="gallery-item" onclick="openLightbox('covidapp', 1)">
-                           <img src="assets/img/covidapp/covidapp-2.jpg" alt="COVID app — test results screen">
-                           <span class="zoom-hint">⤢</span>
-                           <span class="gallery-caption">Test results</span>
-                         </div>
-                         <div class="gallery-item" onclick="openLightbox('covidapp', 2)">
-                           <img src="assets/img/covidapp/covidapp-3.jpg" alt="COVID app — home screen">
-                           <span class="zoom-hint">⤢</span>
-                           <span class="gallery-caption">Home screen</span>
-                         </div>
-                         <div class="gallery-item" onclick="openLightbox('covidapp', 3)">
-                           <img src="assets/img/covidapp/covidapp-4.jpg" alt="COVID app — notifications screen">
-                           <span class="zoom-hint">⤢</span>
-                           <span class="gallery-caption">Notifications</span>
-                         </div>
-                 </div>
+          <div class="app-gallery">
+            <span class="k">App screenshots</span>
+            <div class="gallery-grid" data-gallery="covidapp">
+              <div class="gallery-item" onclick="openLightbox('covidapp', 0)">
+                <img src="assets/img/covidapp/covidapp-1.jpg" alt="COVID app — vaccination booking screen">
+                <span class="zoom-hint">⤢</span>
+                <span class="gallery-caption">Vaccination booking</span>
+              </div>
+              <div class="gallery-item" onclick="openLightbox('covidapp', 1)">
+                <img src="assets/img/covidapp/covidapp-2.jpg" alt="COVID app — test results screen">
+                <span class="zoom-hint">⤢</span>
+                <span class="gallery-caption">Test results</span>
+              </div>
+              <div class="gallery-item" onclick="openLightbox('covidapp', 2)">
+                <img src="assets/img/covidapp/covidapp-3.jpg" alt="COVID app — home screen">
+                <span class="zoom-hint">⤢</span>
+                <span class="gallery-caption">Home screen</span>
+              </div>
+              <div class="gallery-item" onclick="openLightbox('covidapp', 3)">
+                <img src="assets/img/covidapp/covidapp-4.jpg" alt="COVID app — notifications screen">
+                <span class="zoom-hint">⤢</span>
+                <span class="gallery-caption">Notifications</span>
+              </div>
             </div>
+          </div>
 
         </div>
       </article>
@@ -822,8 +819,7 @@ footer { border-top:1px solid var(--line); padding:clamp(20px,4vw,26px) 0; font-
             <span class="k">Result</span>
             <p>CRM deployed across the department. Eliminated manual tracking errors, strengthened compliance, and created a reliable auditable record for all official communications.</p>
           </div>
-        </div>              
-         
+        </div>
       </article>
 
       <!-- Case 04 -->
@@ -855,27 +851,36 @@ footer { border-top:1px solid var(--line); padding:clamp(20px,4vw,26px) 0; font-
             <span class="k">Result</span>
             <p>E-commerce live for art sales. Website current and maintained. Newsletter and social media running regularly, increasing community engagement by 20%. 50+ users supported monthly.</p>
           </div>
-              <div class="app-gallery">
-                 <span class="k">Exhibition photos</span>
-                 <div class="gallery-scroll">
-                   <div class="gallery-item" onclick="openLightbox('inhercolours1.png')">
-                     <img src="inhercolours1.png" alt="In Her Colours exhibition photo 1">
-                   </div>
-                   <div class="gallery-item" onclick="openLightbox('inhercolours2.png')">
-                     <img src="inhercolours2.png" alt="In Her Colours exhibition photo 2">
-                   </div>
-                   <div class="gallery-item" onclick="openLightbox('inhercolours3.png')">
-                     <img src="inhercolours3.png" alt="In Her Colours exhibition photo 3">
-                   </div>
-                   <div class="gallery-item" onclick="openLightbox('inhercolours4.png')">
-                     <img src="inhercolours4.png" alt="In Her Colours exhibition photo 4">
-                   </div>
-                 </div>
-               </div> 
+
+          <!-- IMAGE GALLERY -->
+          <div class="app-gallery">
+            <span class="k">Exhibition photos</span>
+            <div class="gallery-grid" data-gallery="inhercolours">
+              <div class="gallery-item" onclick="openLightbox('inhercolours', 0)">
+                <img src="assets/img/inhercolours/inhercolours-1.jpg" alt="In Her Colours exhibition photo 1">
+                <span class="zoom-hint">⤢</span>
+                <span class="gallery-caption">Exhibition opening</span>
+              </div>
+              <div class="gallery-item" onclick="openLightbox('inhercolours', 1)">
+                <img src="assets/img/inhercolours/inhercolours-2.jpg" alt="In Her Colours exhibition photo 2">
+                <span class="zoom-hint">⤢</span>
+                <span class="gallery-caption">Artwork on display</span>
+              </div>
+              <div class="gallery-item" onclick="openLightbox('inhercolours', 2)">
+                <img src="assets/img/inhercolours/inhercolours-3.jpg" alt="In Her Colours exhibition photo 3">
+                <span class="zoom-hint">⤢</span>
+                <span class="gallery-caption">E-commerce store</span>
+              </div>
+              <div class="gallery-item" onclick="openLightbox('inhercolours', 3)">
+                <img src="assets/img/inhercolours/inhercolours-4.jpg" alt="In Her Colours exhibition photo 4">
+                <span class="zoom-hint">⤢</span>
+                <span class="gallery-caption">Community visitors</span>
+              </div>
+            </div>
+          </div>
+
         </div>
-        
       </article>
-              
 
     </div>
   </section>
@@ -942,140 +947,4 @@ footer { border-top:1px solid var(--line); padding:clamp(20px,4vw,26px) 0; font-
         <span class="k">Certifications &amp; Education</span>
         <ul>
           <li>PMP — PMI, 2023</li>
-          <li>BSc Information Systems Engineering</li>
-          <li>Top Graduate — UTN Tucumán</li>
-          <li>GPA 8/10</li>
-          <li>14+ years continuous practice</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- EDUCATION -->
-  <section class="section" id="education">
-    <div class="section-head">
-      <span class="section-tag">04 — EDUCATION</span>
-      <h2>Qualifications</h2>
-      <span class="section-rule"></span>
-    </div>
-    <div class="edu-grid">
-      <div class="edu-card reveal">
-        <span class="edu-icon">📜</span>
-        <div class="edu-qual">Project Management Professional (PMP)</div>
-        <div class="edu-inst">Project Management Institute (PMI)</div>
-        <div class="edu-meta">
-          <span>International Certification</span>
-          <span>Awarded 2023</span>
-        </div>
-        <span class="edu-highlight">✦ Active PMP Certification</span>
-      </div>
-      <div class="edu-card reveal">
-        <span class="edu-icon">🎓</span>
-        <div class="edu-qual">Bachelor's Degree in Information Systems Engineering</div>
-        <div class="edu-inst">National Technological University (UTN) — Tucumán, Argentina</div>
-        <div class="edu-meta">
-          <span>2005 – 2012</span>
-          <span>GPA 8/10</span>
-        </div>
-        <span class="edu-highlight">🏆 Top Graduate of the Faculty</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section class="close" id="contact">
-    <h2>Looking for IT Support, Systems Admin, or Project talent?</h2>
-    <p>Open to permanent, part-time and contract roles across Greater Manchester — on-site, hybrid or remote.</p>
-    <div class="close-actions">
-      <a class="btn btn-primary" href="mailto:ing.rominaarga@gmail.com">Email Romina</a>
-     <!-- <a class="btn btn-ghost" href="CV_Romina.pdf" target="_blank">Download CV</a>-->
-      <a class="btn btn-ghost" href="https://linkedin.com/in/romina-antonella-arganaraz-pmp" target="_blank" rel="noopener">LinkedIn ↗</a>
-    </div>
-  </section>
-
-  <footer>
-    <div class="footer-inner">
-      <div class="footer-col">
-        <p style="color:var(--paper);font-weight:600;font-family:'Fraunces',serif;font-size:.98rem">Romina Antonella Arganaraz</p>
-        <p>Information Systems Engineer · PMP Certified</p>
-        <p>M6 8NR, Salford, Manchester, UK</p>
-      </div>
-      <div class="footer-col" style="text-align:right">
-        <p><a href="mailto:ing.rominaarga@gmail.com">ing.rominaarga@gmail.com</a></p>
-        <p><a href="https://linkedin.com/in/romina-antonella-arganaraz-pmp" target="_blank">linkedin.com/in/romina-antonella-arganaraz-pmp</a></p>
-        <p style="margin-top:6px;color:rgba(247,245,240,.28)">© 2026</p>
-      </div>
-    </div>
-  </footer>
-
-</div>
-
-<!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox" onclick="closeLightbox()">
-  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
-  <img id="lightbox-img" src="" alt="App screenshot">
-</div>
-
-<script>
-  // Nav
-  function toggleNav() {
-    const nl = document.getElementById('navLinks');
-    const hb = document.getElementById('hamburger');
-    const open = nl.classList.toggle('open');
-    hb.textContent = open ? '✕' : '☰';
-    document.body.style.overflow = open ? 'hidden' : '';
-  }
-  function closeNav() {
-    document.getElementById('navLinks').classList.remove('open');
-    document.getElementById('hamburger').textContent = '☰';
-    document.body.style.overflow = '';
-  }
-
-  // Case toggle
-  function toggleCase(btn) {
-    const card = btn.closest('.case-card');
-    const body = card.querySelector('.case-body');
-    const isOpen = body.classList.contains('open');
-    body.classList.toggle('open', !isOpen);
-    btn.classList.toggle('open', !isOpen);
-    btn.innerHTML = isOpen ? 'View case <span class="arrow">▾</span>' : 'Close <span class="arrow">▾</span>';
-  }
-
-  // Lightbox
-  function openLightbox(src) {
-    document.getElementById('lightbox-img').src = src;
-    document.getElementById('lightbox').classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeLightbox() {
-    document.getElementById('lightbox').classList.remove('open');
-    document.body.style.overflow = '';
-  }
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
-
-  // Scroll reveal
-  const ro = new IntersectionObserver((entries) => {
-    entries.forEach((e, i) => {
-      if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('visible'), i * 50);
-        ro.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.07 });
-  document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
-
-  // Active nav
-  const navAs = document.querySelectorAll('.nav-links a');
-  const so = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        navAs.forEach(a => a.classList.remove('active'));
-        const a = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
-        if (a) a.classList.add('active');
-      }
-    });
-  }, { threshold: 0.3 });
-  document.querySelectorAll('section[id]').forEach(s => so.observe(s));
-</script>
-</body>
-</html>
+          <li>BSc Information Systems
